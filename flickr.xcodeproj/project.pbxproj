@@ -33,11 +33,11 @@
 		E04148202D071F3800509002 /* Exceptions for "flickr" folder in "flickrTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				ImageItem.swift,
+				Extensions/StringExtension.swift,
+				Models/ImageItem.swift,
 				Service/ApiService.swift,
 				Service/NetworkError.swift,
 				Service/NetworkServiceProtocol.swift,
-				StringExtension.swift,
 			);
 			target = E09912B52D02E4CE003977B5 /* flickrTests */;
 		};

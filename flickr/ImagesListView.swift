@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct FImagesListView: View {
-    @ObservedObject var viewModel: FImagesListViewModel
+struct ImagesListView: View {
+    @ObservedObject var viewModel: ImagesListViewModel
 
     var body: some View {
         VStack {
@@ -24,7 +24,7 @@ struct FImagesListView: View {
 
 // MARK: - Subviews
 
-private extension FImagesListView {
+private extension ImagesListView {
 
     var searchTextField: some View {
         TextField(LocalizedStringKey("Search"),
@@ -46,7 +46,7 @@ private extension FImagesListView {
             VStack(alignment: .leading,
                    spacing: Constant.spacing) {
                 ForEach(images, id: \.self) { item in
-                    FItemView(imageUrl: viewModel.imageUrl(imageItem: item),
+                    ImageItemView(imageUrl: viewModel.imageUrl(imageItem: item),
                               name: item.title)
                     Divider()
                 }
@@ -58,7 +58,7 @@ private extension FImagesListView {
 
 // MARK: - Constant
 
-private extension FImagesListView {
+private extension ImagesListView {
 
     struct Constant {
         static let spacing: CGFloat = 0
@@ -70,6 +70,6 @@ private extension FImagesListView {
 #Preview {
     let networkService = NetworkService()
     let apiService = ApiService(networkService: networkService)
-    let viewModel = FImagesListViewModel(apiService: apiService)
-    FImagesListView(viewModel: viewModel)
+    let viewModel = ImagesListViewModel(apiService: apiService)
+    ImagesListView(viewModel: viewModel)
 }

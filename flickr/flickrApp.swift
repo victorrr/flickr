@@ -11,13 +11,13 @@ import SwiftUI
 struct flickrApp: App {
     var body: some Scene {
         WindowGroup {
-            FImagesListView(viewModel: viewModel)
+            ImagesListView(viewModel: viewModel)
         }
     }
 
-    private var viewModel: FImagesListViewModel {
+    private var viewModel: ImagesListViewModel {
         let networkService = NetworkService()
         let apiService = ApiService(networkService: networkService)
-        return FImagesListViewModel(apiService: apiService)
+        return ImagesListViewModel(apiService: apiService)
     }
 }

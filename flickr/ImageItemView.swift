@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FItemView: View {
+struct ImageItemView: View {
     var imageUrl: URL?
     var name: String
 
@@ -29,7 +29,7 @@ struct FItemView: View {
 
 // MARK: - Subviews
 
-private extension FItemView {
+private extension ImageItemView {
 
     var imageView: some View {
         AsyncImage(url: imageUrl,
@@ -70,7 +70,7 @@ private extension FItemView {
 
 // MARK: - Constant
 
-private extension FItemView {
+private extension ImageItemView {
 
     struct Constant {
         static let spacing: CGFloat = 10,
@@ -81,7 +81,7 @@ private extension FItemView {
 #Preview {
     VStack {
         Spacer()
-        FItemView(imageUrl: URL(string: ""), name: "Image title")
+        ImageItemView(imageUrl: URL(string: ""), name: "Image title")
             .frame(height: 150)
         Spacer()
     }

@@ -8,8 +8,9 @@
 import Combine
 import Foundation
 
-final class FImagesListViewModel: ObservableObject {
+final class ImagesListViewModel: ObservableObject {
     @Published var searchTerm: String = ""
+//    @Published
     @Published var images: [ImageItem]?
     private var apiService: ApiServiceProtocol
     private var cancellables = Set<AnyCancellable>()
@@ -29,9 +30,18 @@ final class FImagesListViewModel: ObservableObject {
     }
 }
 
+extension ImagesListViewModel {
+
+    enum ViewState {
+        case empty
+        case images([ImageItem])
+        case loading
+    }
+}
+
 // MARK: - Private
 
-private extension FImagesListViewModel {
+private extension ImagesListViewModel {
 
     func observeSearches() {
         $searchTerm
