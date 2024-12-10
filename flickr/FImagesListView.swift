@@ -65,6 +65,8 @@ private extension FImagesListView {
     }
 }
 
+// MARK: - Preview
+
 #Preview {
     let networkService = NetworkService()
     let apiService = ApiService(networkService: networkService)

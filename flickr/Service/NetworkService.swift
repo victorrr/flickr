@@ -7,9 +7,7 @@
 
 import Foundation
 
-protocol NetworkServiceProtocol {
-    func fetch<T: Decodable>(with request: URLRequest) async throws -> T
-}
+// MARK: - NetworkService
 
 final class NetworkService: NetworkServiceProtocol {
 

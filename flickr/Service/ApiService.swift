@@ -8,10 +8,14 @@
 import Foundation
 import SwiftUI
 
+// MARK: - ApiServiceProtocol
+
 protocol ApiServiceProtocol {
     func fetchImageItems(text: String) async throws -> [ImageItem]?
     func imageUrl(imageItem: ImageItem) throws -> URL
 }
+
+// MARK: - ApiService
 
 final class ApiService: ApiServiceProtocol {
     private let networkService: NetworkServiceProtocol
@@ -39,6 +43,9 @@ final class ApiService: ApiServiceProtocol {
     }
 
     func imageUrl(imageItem: ImageItem) throws -> URL {
+        guard !imageItem.server.isEmpty, !imageItem.id.isEmpty, !imageItem.secret.isEmpty else {
+            throw NetworkError.invalidUrl
+        }
         let path = "/\(imageItem.server)/\(imageItem.id)_\(imageItem.secret)_q.jpg"
         guard let url = createUrl(host: Constant.imageHost, path: path) else {
             throw NetworkError.invalidUrl
@@ -52,6 +59,7 @@ final class ApiService: ApiServiceProtocol {
 private extension ApiService {
 
     func createUrl(host: String, path: String, queryItems: [URLQueryItem]? = nil) -> URL? {
+        guard !host.isEmpty, !path.isEmpty else { return nil }
         var components = URLComponents()
         components.scheme = Constant.scheme
         components.host = host
@@ -74,24 +82,23 @@ private extension ApiService {
 private extension ApiService {
 
     struct Constant {
-        static let
-        scheme = "https",
-        imagesHost = "www.flickr.com",
-        imageHost = "live.staticflickr.com",
-        applicationJson = "application/json",
-        contentType = "Content-Type",
-        accept = "accept",
-        getMethod = "GET",
-        imagesPath = "/services/rest/",
-        text = "text",
-        apiKey = "api_key",
-        format = "format",
-        json = "json",
-        method = "method",
-        methodValue = "flickr.photos.search",
-        fromDate = "fromDate",
-        toDate = "toDate",
-        nojsoncallback = "nojsoncallback",
-        one = "1"
+        static let scheme = "https",
+                   imagesHost = "www.flickr.com",
+                   imageHost = "live.staticflickr.com",
+                   applicationJson = "application/json",
+                   contentType = "Content-Type",
+                   accept = "accept",
+                   getMethod = "GET",
+                   imagesPath = "/services/rest/",
+                   text = "text",
+                   apiKey = "api_key",
+                   format = "format",
+                   json = "json",
+                   method = "method",
+                   methodValue = "flickr.photos.search",
+                   fromDate = "fromDate",
+                   toDate = "toDate",
+                   nojsoncallback = "nojsoncallback",
+                   one = "1"
     }
 }

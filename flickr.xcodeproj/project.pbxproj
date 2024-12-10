@@ -29,20 +29,32 @@
 		E09912C02D02E4CE003977B5 /* flickrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = flickrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E04148202D071F3800509002 /* Exceptions for "flickr" folder in "flickrTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ImageItem.swift,
+				Service/ApiService.swift,
+				Service/NetworkError.swift,
+				Service/NetworkServiceProtocol.swift,
+				StringExtension.swift,
+			);
+			target = E09912B52D02E4CE003977B5 /* flickrTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E09912A82D02E4C8003977B5 /* flickr */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E04148202D071F3800509002 /* Exceptions for "flickr" folder in "flickrTests" target */,
+			);
 			path = flickr;
 			sourceTree = "<group>";
 		};
 		E09912B92D02E4CE003977B5 /* flickrTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = flickrTests;
-			sourceTree = "<group>";
-		};
-		E09912C32D02E4CE003977B5 /* flickrUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = flickrUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -77,7 +89,6 @@
 			children = (
 				E09912A82D02E4C8003977B5 /* flickr */,
 				E09912B92D02E4CE003977B5 /* flickrTests */,
-				E09912C32D02E4CE003977B5 /* flickrUITests */,
 				E09912A72D02E4C8003977B5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -152,9 +163,6 @@
 			);
 			dependencies = (
 				E09912C22D02E4CE003977B5 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				E09912C32D02E4CE003977B5 /* flickrUITests */,
 			);
 			name = flickrUITests;
 			packageProductDependencies = (
