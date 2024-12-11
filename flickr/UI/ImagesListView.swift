@@ -67,11 +67,14 @@ private extension ImagesListView {
             Text("something_wrong")
                 .font(.title)
                 .foregroundStyle(.red)
+                .multilineTextAlignment(.center)
             Text(desciption ?? "unknown_error")
                 .font(.title3)
                 .foregroundStyle(.red)
+                .multilineTextAlignment(.center)
             Spacer()
         }
+        .padding()
     }
 
     func resultScrollView(_ images: [ImageItem]) -> some View {
