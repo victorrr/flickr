@@ -34,12 +34,20 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Extensions/StringExtension.swift,
+				Localizable.xcstrings,
 				Models/ImageItem.swift,
 				Service/ApiService.swift,
 				Service/NetworkError.swift,
 				Service/NetworkServiceProtocol.swift,
 			);
 			target = E09912B52D02E4CE003977B5 /* flickrTests */;
+		};
+		E041482C2D085EFD00509002 /* Exceptions for "flickrTests" folder in "flickr" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MockNetworkService.swift,
+			);
+			target = E09912A52D02E4C8003977B5 /* flickr */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -54,6 +62,9 @@
 		};
 		E09912B92D02E4CE003977B5 /* flickrTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E041482C2D085EFD00509002 /* Exceptions for "flickrTests" folder in "flickr" target */,
+			);
 			path = flickrTests;
 			sourceTree = "<group>";
 		};
@@ -200,6 +211,7 @@
 			knownRegions = (
 				en,
 				Base,
+				sv,
 			);
 			mainGroup = E099129D2D02E4C8003977B5;
 			minimizedProjectReferenceProxies = 1;
@@ -336,6 +348,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -392,6 +405,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

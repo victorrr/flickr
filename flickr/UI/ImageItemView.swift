@@ -52,7 +52,7 @@ private extension ImageItemView {
                 image
                     .resizable()
                     .scaledToFit()
-                    .cornerRadius(4)
+                    .cornerRadius(Constant.imageRadius)
             )
         case .failure:
             AnyView(
@@ -74,14 +74,15 @@ private extension ImageItemView {
 
     struct Constant {
         static let spacing: CGFloat = 10,
-                   imageWidth: CGFloat = 150
+                   imageWidth: CGFloat = 150,
+                   imageRadius: CGFloat = 4
     }
 }
 
 #Preview {
     VStack {
         Spacer()
-        ImageItemView(imageUrl: URL(string: ""), name: "Image title")
+        ImageItemView(imageUrl: URL(string: "https://live.staticflickr.com/65535/54195654010_d4ef9b9f15_q.jpg"), name: "Image title")
             .frame(height: 150)
         Spacer()
     }

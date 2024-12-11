@@ -10,8 +10,7 @@ import Foundation
 
 final class ImagesListViewModel: ObservableObject {
     @Published var searchTerm: String = ""
-//    @Published
-    @Published var images: [ImageItem]?
+    @Published var viewState = ViewState.empty
     private var apiService: ApiServiceProtocol
     private var cancellables = Set<AnyCancellable>()
 
@@ -30,12 +29,15 @@ final class ImagesListViewModel: ObservableObject {
     }
 }
 
+// MARK: - ViewState
+
 extension ImagesListViewModel {
 
     enum ViewState {
         case empty
         case images([ImageItem])
         case loading
+        case error(Error)
     }
 }
 
@@ -54,9 +56,21 @@ private extension ImagesListViewModel {
     func searchImages(_ text: String) {
         Task { @MainActor in
             do {
-                self.images = try await self.apiService.fetchImageItems(text: text)
+                if case .empty = self.viewState {
+                    self.viewState = .loading
+                }
+                let images = try await self.apiService.fetchImageItems(text: text)
+                guard let images = images else {
+                    self.viewState = .empty
+                    return
+                }
+                guard !images.isEmpty else {
+                    self.viewState = .error(NetworkError.noImages)
+                    return
+                }
+                self.viewState = .images(images)
             } catch {
-                print("fetching images error \(error)")
+                self.viewState = .error(error)
             }
         }
     }

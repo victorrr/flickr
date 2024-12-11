@@ -16,7 +16,6 @@ final class NetworkService: NetworkServiceProtocol {
         guard
             let httpResponse = response as? HTTPURLResponse,
             (200..<300).contains(httpResponse.statusCode) else {
-            print(response)
             throw NetworkError.invalidResponse
         }
         do {
